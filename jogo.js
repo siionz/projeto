@@ -71,4 +71,4 @@ requestAnimationFrame(movePipe);
 
 setInterval(() => {
     speed += 0.8;
-}, 30000);
+}, 15000);
