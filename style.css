@@ -1,45 +1,122 @@
-body {
-  background: #111;
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  user-select: none;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
 }
 
-#game-area {
-  flex: 1;
-  background: #222;
+.game-board {
+  width: 95%;
+  max-width: 650px;
+  height: 400px;
+  border: 2px solid black;
+  border-bottom: 10px solid #00c91b;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
-#controls {
+.pipe {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  animation: movePipe 1.8s linear infinite;
+}
+
+
+.mario {
+  position: absolute;
+  bottom: 0px;
+  width: 90px;
+}
+
+.cloud {
+  position: absolute;
+  top: 30px;
+  right: -150px;
+  width: 300px;
+  opacity: 0.8;
+  animation: moveClouds 10s linear infinite;
+}
+
+.jump {
+  animation: jumpMario 500ms ease-in-out;
+}
+
+@keyframes movePipe {
+  from { left: 100%; }
+  to { left: -60px; }
+}
+
+@keyframes jumpMario {
+  0% { bottom: 0; }
+  40% { bottom: 170px; }
+  50% { bottom: 170px; }
+  60% { bottom: 170px; }
+  70% { bottom: 170px; }
+  80% { bottom: 170px; }
+  100% { bottom: 0; }
+  
+}
+
+@keyframes moveClouds {
+  0% { right: -200px; }
+  100% { right: 120%; }
+}
+
+.mobile-controls {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
-  padding: 20px;
-  background: #181818;
+  justify-content: center;
+  pointer-events: none;
 }
 
-#controls button {
-  width: 80px;
-  height: 80px;
-  font-size: 2rem;
-  border: none;
-  border-radius: 10px;
-  background: #444;
-  color: white;
+.control-btn {
+  pointer-events: auto;
+  background-color: #00ff4c;
+  border: 3px solid #000;
+  margin-bottom: 90px;
+  padding: 15px 25px;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 12px;
+  font-family: 'Press Start 2P';
+  box-shadow: 0 4px 0 #000;
 }
 
-#controls button:active {
-  background: #666;
+.control-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #000;
 }
 
-/* Responsivo para celular */
 @media (max-width: 600px) {
-  #controls button {
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
+  .game-board {
+    height: 300px;
+    max-width: 90%;
   }
+
+  .clouds {
+    width: 90px;
+    top: 20px;
+  }
+}
+
+#score {
+    position: absolute;
+    top: 95px;
+    font-size: 22px;
+    color: #fff;
+    text-shadow: 3px 3px 0 #000;
+    font-family: 'Press Start 2P';
 }

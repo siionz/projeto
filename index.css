@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+}
+
+body {
+    background: linear-gradient(135deg, #216672, #42d4bc);
+    min-height: 100vh;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* 🔥 BEM MAIOR */
+h1 {
+    color: #ffffff;
+    font-size: clamp(28px, 9vw, 42px);
+    margin-bottom: 35px;
+    line-height: 1.4;
+}
+
+/* 🔥 Texto muito mais visível */
+p {
+    color: #ffffff;
+    font-size: clamp(18px, 6vw, 26px);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* 🔥 Botão gigante e confortável */
+button {
+    padding: 20px 48px;
+    font-size: clamp(20px, 7vw, 32px);
+    cursor: pointer;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 14px;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.25);
+}
+
+button:active {
+    transform: scale(0.93);
+}
+
+
+footer {
+    text-align: center;
+    font-size: clamp(14px, 4vw, 18px);
+    margin-top: 45px;
+    color: #ffffff;
+}
+
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: clamp(30px, 10vw, 46px);
+    }
+
+    p {
+        font-size: clamp(20px, 7vw, 28px);
+    }
+
+    button {
+        padding: 22px 52px;
+        font-size: clamp(22px, 8vw, 34px);
+    }
+
+    footer {
+        font-size: clamp(16px, 5vw, 20px);
+    }
+}
