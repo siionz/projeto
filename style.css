@@ -25,6 +25,7 @@ body {
   background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
+
 .mario {
   position: absolute;
   bottom: 0;
@@ -36,46 +37,38 @@ body {
   position: absolute;
   bottom: 0;
   width: 40px;
-  animation: movePipe 1.6s linear infinite;
-}
-
-@keyframes moveClouds {
-  0% {
-    right: -350px; 
-  }
-  100% {
-    right: 140%;  
-  }
+  left: 100%;
+  z-index: 8;
 }
 
 .cloud {
   position: absolute;
   top: 30px;
-  right: -350px;
+  right: -150px;
   width: 300px;
   opacity: 0.8;
-  animation: moveClouds 10s linear infinite;
-  z-index: 1;
+  animation: moveClouds 14s linear infinite;
+  z-index: 2;
 }
 
-@keyframes movePipe {
-  from { left: 100%; }
-  to { left: -40px; }
+@keyframes moveClouds {
+  0% { right: -300px; }
+  100% { right: 120%; }
 }
+
 
 .jump {
-  animation: jump 700ms ease-out forwards;
+  animation: jump 700ms ease-out;
 }
 
 @keyframes jump {
-  0%   { bottom: 0; }
-  20%  { bottom: 80px; }
-  40%  { bottom: 140px; }
-  55%  { bottom: 150px; }
-  70%  { bottom: 140px; }
-  90%  { bottom: 60px; }
+  0% { bottom: 0; }
+  30% { bottom: 110px; }
+  50% { bottom: 130px; }
+  70% { bottom: 110px; }
   100% { bottom: 0; }
 }
+
 
 .mobile-controls {
   position: fixed;
@@ -104,6 +97,16 @@ body {
   box-shadow: 0 0 0 #000;
 }
 
+#score {
+  position: absolute;
+  top: 95px;
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #000;
+  font-family: 'Press Start 2P';
+  z-index: 20;
+}
+
 @media (max-width: 600px) {
   .game-board {
     height: 300px;
@@ -114,13 +117,4 @@ body {
     width: 90px;
     top: 20px;
   }
-}
-
-#score {
-  position: absolute;
-  top: 95px;
-  font-size: 22px;
-  color: #fff;
-  text-shadow: 3px 3px 0 #000;
-  font-family: 'Press Start 2P';
 }
