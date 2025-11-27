@@ -4,24 +4,19 @@ const scoreElement = document.getElementById("score");
 
 let score = 0;
 let scoreInterval;
-let loop;
-const START_DELAY = 1000; 
 
 const jump = () => {
     if (!mario.classList.contains('jump')) {
         mario.classList.add('jump');
         setTimeout(() => {
             mario.classList.remove('jump');
-        }, 500);
+        }, 700); 
     }
 };
 
 document.addEventListener('keydown', jump);
 document.getElementById("jumpBtn").addEventListener("touchstart", jump);
 document.getElementById("jumpBtn").addEventListener("click", jump);
-
-
-pipe.style.animation = 'none';
 
 function startScore() {
     score = 0;
@@ -32,32 +27,26 @@ function startScore() {
     }, 1);
 }
 
+startScore();
 
-setTimeout(() => {
-    pipe.style.animation = '';
+const loop = setInterval(() => {
+    const pipePosition = pipe.offsetLeft;
+    const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
 
-    startScore();
+    if (pipePosition <= 95 && pipePosition > 0 && marioPosition < 50) {
 
-    loop = setInterval(() => {
-        const pipePosition = pipe.offsetLeft;
-        const marioPosition = +window.getComputedStyle(mario).bottom.replace('px', '');
+        clearInterval(scoreInterval);
 
-        if (pipePosition <= 98 && pipePosition > 0 && marioPosition < 60) {
+        pipe.style.animation = 'none';
+        pipe.style.left = `${pipePosition}px`;
 
-            clearInterval(scoreInterval);
+        mario.style.animation = 'none';
+        mario.style.bottom = `${marioPosition}px`;
 
-            pipe.style.animation = 'none';
-            pipe.style.left = `${pipePosition}px`;
+        mario.src = './media/game-over.png';
+        mario.style.width = '45px';
+        mario.style.marginLeft = '60px';
 
-            mario.style.animation = 'none';
-            mario.style.bottom = `${marioPosition}px`;
-
-            mario.src = './media/game-over.png';
-            mario.style.width = '50px';
-            mario.style.marginLeft = '50px';
-
-            clearInterval(loop);
-        }
-    }, 10);
-
-}, START_DELAY);
+        clearInterval(loop);
+    }
+}, 10);

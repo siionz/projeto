@@ -25,52 +25,56 @@ body {
   background: linear-gradient(#87CEEB, #E0F6FF);
 }
 
+.mario {
+  position: absolute;
+  bottom: 0;
+  width: 90px;
+  z-index: 10;
+}
+
 .pipe {
   position: absolute;
   bottom: 0;
-  width: 60px;
-  animation: movePipe 1.8s linear infinite;
+  width: 40px;
+  animation: movePipe 1.6s linear infinite;
 }
 
-
-.mario {
-  position: absolute;
-  bottom: 0px;
-  width: 90px;
+@keyframes moveClouds {
+  0% {
+    right: -350px; 
+  }
+  100% {
+    right: 140%;  
+  }
 }
 
 .cloud {
   position: absolute;
   top: 30px;
-  right: -150px;
+  right: -350px;
   width: 300px;
   opacity: 0.8;
   animation: moveClouds 10s linear infinite;
-}
-
-.jump {
-  animation: jumpMario 500ms ease-in-out;
+  z-index: 1;
 }
 
 @keyframes movePipe {
   from { left: 100%; }
-  to { left: -60px; }
+  to { left: -40px; }
 }
 
-@keyframes jumpMario {
-  0% { bottom: 0; }
-  40% { bottom: 170px; }
-  50% { bottom: 170px; }
-  60% { bottom: 170px; }
-  70% { bottom: 170px; }
-  80% { bottom: 170px; }
+.jump {
+  animation: jump 700ms ease-out forwards;
+}
+
+@keyframes jump {
+  0%   { bottom: 0; }
+  20%  { bottom: 80px; }
+  40%  { bottom: 140px; }
+  55%  { bottom: 150px; }
+  70%  { bottom: 140px; }
+  90%  { bottom: 60px; }
   100% { bottom: 0; }
-  
-}
-
-@keyframes moveClouds {
-  0% { right: -200px; }
-  100% { right: 120%; }
 }
 
 .mobile-controls {
@@ -113,10 +117,10 @@ body {
 }
 
 #score {
-    position: absolute;
-    top: 95px;
-    font-size: 22px;
-    color: #fff;
-    text-shadow: 3px 3px 0 #000;
-    font-family: 'Press Start 2P';
+  position: absolute;
+  top: 95px;
+  font-size: 22px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #000;
+  font-family: 'Press Start 2P';
 }
